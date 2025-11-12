@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://89.21.85.27:5002'
+
 function MyAccountPage() {
   const [user, setUser] = useState(null)
   const [activeTab, setActiveTab] = useState('account-details')
@@ -46,7 +48,7 @@ function MyAccountPage() {
     setLoading(true)
 
     try {
-      const response = await fetch(`http://89.21.85.27:5002/users/${user.id}`, {
+      const response = await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -93,7 +95,7 @@ function MyAccountPage() {
     setLoading(true)
 
     try {
-      const response = await fetch(`http://89.21.85.27:5002/users/${user.id}`, {
+      const response = await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: newPassword })

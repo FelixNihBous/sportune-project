@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://89.21.85.27:5002'
+
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -18,7 +20,7 @@ export default function LoginPage() {
 
     try {
       // Fetch user from JSON server
-      const response = await fetch('http://89.21.85.27:5002/users?email=' + email)
+      const response = await fetch(`${API_URL}/users?email=${encodeURIComponent(email)}`)
       const users = await response.json()
 
       if (users.length === 0) {

@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://89.21.85.27:5002'
+
 export default function SignupPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -31,7 +33,7 @@ export default function SignupPage() {
 
         try {
             // Check if email already exists
-            const checkResponse = await fetch('http://89.21.85.27:5002/users?email=' + email)
+            const checkResponse = await fetch(`${API_URL}/users?email=${encodeURIComponent(email)}`)
             const existingUsers = await checkResponse.json()
 
             if (existingUsers.length > 0) {
@@ -41,7 +43,7 @@ export default function SignupPage() {
             }
 
             // Create new user
-            const response = await fetch('http://89.21.85.27:5002/users', {
+            const response = await fetch(`${API_URL}/users`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
