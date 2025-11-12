@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://89.21.85.27:5002'
+import { API_URL } from '../../lib/api'
 
 function MyAccountPage() {
   const [user, setUser] = useState(null)
