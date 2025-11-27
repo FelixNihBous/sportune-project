@@ -1,9 +1,7 @@
-'use client'
-
+"use client"
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { API_URL } from '../../lib/api'
 
 export default function SignupPage() {
     const [email, setEmail] = useState('')
@@ -31,38 +29,27 @@ export default function SignupPage() {
         setLoading(true)
 
         try {
-            // Check if email already exists
-            const checkResponse = await fetch(`${API_URL}/users?email=${encodeURIComponent(email)}`)
-            const existingUsers = await checkResponse.json()
-
-            if (existingUsers.length > 0) {
-                setError('Email already registered')
-                setLoading(false)
-                return
-            }
-
             // Create new user
-            const response = await fetch(`${API_URL}/users`, {
+            const response = await fetch('/api/auth/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email,
                     password,
                     nickname,
-                    createdAt: new Date().toISOString()
                 })
             })
 
+            const data = await response.json()
+
             if (!response.ok) {
-                setError('Signup failed')
+                setError(data.error || 'Signup failed')
                 setLoading(false)
                 return
             }
 
-            const newUser = await response.json()
-
             // Store user info
-            localStorage.setItem('user', JSON.stringify(newUser))
+            localStorage.setItem('user', JSON.stringify(data))
 
             // Show success notification and redirect
             const notification = document.createElement('div')

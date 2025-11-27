@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { API_URL } from '../../lib/api'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -18,28 +17,22 @@ export default function LoginPage() {
     setLoading(true)
 
     try {
-      // Fetch user from JSON server
-      const response = await fetch(`${API_URL}/users?email=${encodeURIComponent(email)}`)
-      const users = await response.json()
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
 
-      if (users.length === 0) {
-        setError('Invalid email or password')
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError(data.error || 'Invalid email or password')
         setLoading(false)
         return
       }
 
-      const user = users[0]
+      localStorage.setItem('user', JSON.stringify(data))
 
-      if (user.password !== password) {
-        setError('Invalid email or password')
-        setLoading(false)
-        return
-      }
-
-      // Store user info
-      localStorage.setItem('user', JSON.stringify(user))
-
-      // Show success notification and redirect
       const notification = document.createElement('div')
       notification.innerHTML = `
         <div style="
