@@ -4,9 +4,11 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Hanken Grotesk", sans-serif;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   overflow-x: hidden;
 }
@@ -18,3 +20,495 @@ html, body {
   font-style: normal;
 }
 
+.banner-container {
+  background-color: #212844;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  box-sizing: border-box;
+  margin: 1rem auto;
+}
+
+.text-banner {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: left;
+}
+
+/* Smaller font sizes for Mobile */
+.text1 p {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.text1 h1 {
+  font-size: 2rem;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.text2 p {
+  font-size: 1rem;
+  color: #f16d4a;
+  margin-top: 0.5rem;
+}
+
+.banner-image {
+  display: none;
+  width: 530.19px;
+  height: 268.27px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.textAbout2 {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: left;
+  font-size: 2.222vh;
+  max-width: 55.556vh;
+}
+
+.secondLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  position: relative;
+  bottom: 40;
+  right: 170;
+  align-items: center;
+}
+
+.text3 {
+  max-width: 115.37vh;
+  font-size: 2.222vh;
+  padding: 9.259vh;
+  text-align: center;
+}
+
+.text4 {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: left;
+  font-size: 2.222vh;
+  width: 100vw;
+  display: flex;
+  position: relative;
+  right: 170px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.text4Content {
+  max-width: 59.444vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  align-items: center;
+  font-size: 2.222vh;
+  line-height: 1.4;
+}
+
+.visimisi {
+  padding: 5.185vh;
+  font-size: 1.852vh;
+  max-width: 126.111vh;
+  /* margin: 20px; */
+}
+
+/* --- FOOTER STYLES --- */
+
+.footer-container {
+    background-color: #242C44;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'system-ui', sans-serif; /* Ganti dengan font yang Anda gunakan */
+    line-height: 1.6;
+}
+
+.footer-circle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 400px; 
+    width: 400px;
+    background-color: #FF6B35;
+    border-radius: 50%;
+    transform: translateX(50%) translateY(-33%); 
+    z-index: 0;
+}
+
+/* Responsiveness for the circle */
+@media (max-width: 768px) {
+    .footer-circle {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    
+    /* Grid layout for desktop */
+    display: grid;
+    /* Contact Us (2), Categories (1), Company (1) */
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #555c70;
+    position: relative;
+    z-index: 10;
+}
+
+/* Responsiveness: Stack columns on smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        /* Mengubah ke 2 kolom pada layar kecil */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-contact {
+        grid-column: span 2; /* Contact section spans both columns */
+    }
+}
+
+/* --- Section Styling --- */
+
+.footer-section {
+    padding-right: 20px;
+}
+
+.footer-heading {
+    /* Categories & Company Titles */
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white; /* Pastikan judul berwarna putih */
+    border-bottom: 2px solid #FF6B35;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.footer-contact .text-xl {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* Contact Us sub-title */
+.footer-contact h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 5px; /* Kurangi margin untuk mendekatkan Address */
+}
+
+
+/* --- Contact Item Details (Address, Mail, Social) --- */
+
+.contact-item {
+    display: flex;
+    align-items: flex-start; 
+    margin-bottom: 10px; /* Kurangi margin */
+    gap: 8px;
+}
+
+.contact-details {
+    /* Menghapus padding/margin internal yang mungkin mengganggu */
+    padding: 0;
+    margin: 0;
+}
+
+.contact-details p:first-child {
+    font-weight: 500;
+    color: white; /* Pastikan label Address/Mail berwarna putih */
+    margin-bottom: 2px;
+}
+
+.contact-details .text-gray-400 {
+    /* Gaya untuk isi Address */
+    color: #cccccc; 
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Jarak antar Instagram dan TikTok */
+    margin-top: 10px;
+}
+
+.link-orange {
+    color: #FF6B35;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.link-orange:hover {
+    color: white;
+}
+
+
+/* --- List Items (Categories & Company) --- */
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #a0aec0;
+    line-height: 2.2; 
+}
+
+.link-item {
+    color: #cccccc; /* Warna link default */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.link-item:hover {
+    color: #FF6B35; /* Link hover color */
+}
+
+
+/* --- Copyright --- */
+
+.footer-copyright {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.875rem; 
+    color: #a0aec0;
+}
+
+/* Placeholder Fixes */
+.logo-placeholder, .contact-item > div:first-child {
+    /* Ikon */
+    background-color: white;
+    flex-shrink: 0; /* Penting agar ikon tidak mengecil */
+}
+/* --- Tablet and Desktop Layout (side-by-side) --- */
+@media (min-width: 768px) {
+  .banner-container {
+    flex-direction: row;
+    /* Switch to side-by-side */
+    justify-content: space-between;
+    min-height: 250px;
+  }
+
+  .text-banner {
+    flex: 1;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  .text1 p {
+    font-size: 1.25rem;
+  }
+
+  .text1 h1 {
+    font-size: 3rem;
+  }
+
+  .text2 p {
+    font-size: 1.25rem;
+  }
+
+  .banner-image {
+    display: flex;
+    max-width: 530px;
+  }
+}
+
+/* This is where the original misplaced '}' was removed */
+
+
+/* --- Mobile Fix: Apply Column Layout to Product Detail --- */
+@media (max-width: 768px) {
+
+  .product-detail-container {
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 20px !important;
+    text-align: center;
+    align-items: center;
+  }
+
+  .product-detail-container img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .product-detail-container p {
+    font-size: 14px !important;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* Buttons Responsive */
+  .product-detail-container div:last-child div {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .product-detail-container button {
+    width: 100%;
+    padding: 12px !important;
+    font-size: 15px;
+  }
+
+  .nav-buttons {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  .nav-buttons button {
+    width: auto;
+    padding: 10px 20px !important;
+  }
+}
+
+/* About Page Responsiveness */
+
+/* Mobile Styles (max-width: 767px) */
+@media (max-width: 767px) {
+  .secondLine {
+    flex-direction: column !important;
+    align-items: center !important;
+    position: static !important;
+    width: 90% !important;
+    margin: 20px auto !important;
+  }
+
+  .secondLine .meditate {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 300px !important;
+  }
+
+  .textAbout2 {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    max-width: 90% !important;
+    margin-top: 20px !important;
+  }
+
+  .text3 {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    max-width: 90% !important;
+    padding: 20px !important;
+  }
+
+  .text4 {
+    flex-direction: column !important;
+    align-items: center !important;
+    position: static !important;
+    width: 90% !important;
+    margin: 20px auto !important;
+  }
+
+  .text4 img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 300px !important;
+  }
+
+  .text4Content {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    max-width: 90% !important;
+    padding: 20px 10px !important;
+  }
+
+  .visimisi {
+    padding: 20px !important;
+    font-size: 1rem !important;
+    max-width: 90% !important;
+    text-align: center !important;
+  }
+
+  .visimisi .visi,
+  .visimisi .misi {
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Tablet Styles (min-width: 768px and max-width: 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .secondLine {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    position: static !important;
+  }
+
+  .secondLine .meditate {
+    width: 40% !important;
+    height: auto !important;
+  }
+
+  .textAbout2 {
+    font-size: 1.2rem !important;
+    max-width: 50% !important;
+    text-align: left !important;
+  }
+
+  .text3 {
+    font-size: 1.2rem !important;
+    max-width: 80% !important;
+    padding: 40px !important;
+  }
+
+  .text4 {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    position: static !important;
+  }
+
+  .text4 img {
+    width: 40% !important;
+    height: auto !important;
+  }
+
+  .text4Content {
+    font-size: 1.2rem !important;
+    max-width: 50% !important;
+    padding: 20px !important;
+  }
+
+  .visimisi {
+    padding: 40px !important;
+    font-size: 1.2rem !important;
+    max-width: 90% !important;
+  }
+}

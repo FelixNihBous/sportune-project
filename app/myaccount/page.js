@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { API_URL } from '../../lib/api'
+import { API_URL } from '../lib/api'
 
 function MyAccountPage() {
   const [user, setUser] = useState(null)
@@ -120,11 +120,6 @@ function MyAccountPage() {
     }
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem('user')
-    router.push('/')
-  }
-
   if (!user) {
     return <div style={{ padding: '20px', textAlign: 'center' }}>Loading...</div>
   }
@@ -132,7 +127,6 @@ function MyAccountPage() {
   const navItems = [
     { id: 'account-details', label: 'Account Details', icon: '⚙️' },
     { id: 'password', label: 'Change Password', icon: '🔒' },
-    { id: 'logout', label: 'Logout', icon: '🚪' }
   ]
 
   return (
@@ -146,16 +140,16 @@ function MyAccountPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 9999
+      zIndex: 9999,
+      padding: '10px'
     }}>
-      <div style={{
+      <div className="myaccount-container" style={{
         display: 'flex',
-        height: '90vh',
         background: '#f5f5f5',
         borderRadius: '16px',
         overflow: 'hidden',
         maxWidth: '1200px',
-        width: '95%',
+        width: '100%',
         boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
       }}>
         <div style={{

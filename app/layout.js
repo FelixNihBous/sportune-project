@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "./lib/AuthContext";
+import { CartProvider } from "./lib/CartContext"; // ⬅ ADD THIS
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,10 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AuthProvider>
+         <CartProvider>       {/* 🛒 Cart now works globally */}
+            {children}
+         </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
