@@ -7,5 +7,4 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
-// This will use the 'usersAndPass' collection in the 'users' database
 export default mongoose.models.User || mongoose.model("User", UserSchema, "usersAndPass");
