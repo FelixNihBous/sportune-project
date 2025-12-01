@@ -21,12 +21,12 @@ const ProductDetailsView = ({ product, onBack }) => {
   // FIX: Using the correct PascalCase name for the imported component: <ProductDetail />
   return (
     <ProductDetail
-      NamaProduk={product.nama}
-      HargaProduk={product.Harga}
+      NamaProduk={product.product_name}
+      HargaProduk={product.unit_price_rp}
       DeskripsiProduk={product.deskripsi}
-      GambarProduk={product.imgLink}
-      KodeProduk={product.id}
-      Quantity={product.Kuantiitas}
+      GambarProduk={product.image_link}
+      KodeProduk={product.product_code}
+      Quantity={product.stock}
       onBack={onBack}
     />
   );
@@ -36,7 +36,7 @@ const ProductDetailsView = ({ product, onBack }) => {
 const ProductCard = ({ product, onSelectProduct }) => {
 
   const handleClick = () => {
-    onSelectProduct(product.id);
+    onSelectProduct(product.product_code);
   };
 
   return (
@@ -55,9 +55,9 @@ const ProductCard = ({ product, onSelectProduct }) => {
       }}
       onClick={handleClick}
     >
-      <Image src={product.imgLink} alt={product.nama} width={100} height={100} style={{ objectFit: 'contain', marginBottom: '10px' }} />
-      <p style={{ fontWeight: '500', fontSize: '14px', textAlign: 'center', margin: '0 0 5px 0' }}>{product.nama}</p>
-      <p style={{ color: '#FF6B4A', fontWeight: 'bold', fontSize: '16px', margin: '0 0 15px 0' }}>Rp. {product.Harga}</p>
+      <Image src={product.image_link} alt={product.product_name} width={100} height={100} style={{ objectFit: 'contain', marginBottom: '10px' }} />
+      <p style={{ fontWeight: '500', fontSize: '14px', textAlign: 'center', margin: '0 0 5px 0' }}>{product.product_name}</p>
+      <p style={{ color: '#FF6B4A', fontWeight: 'bold', fontSize: '16px', margin: '0 0 15px 0' }}>Rp. {product.unit_price_rp}</p>
       <button
         onClick={(e) => {
           e.stopPropagation();
@@ -252,7 +252,7 @@ export default function HomeContent() {
           }}
         >
           {sportCatalog.map(product => (
-            <ProductCard key={product.id} product={product} onSelectProduct={setSelectedProductId} />
+            <ProductCard key={product.product_code} product={product} onSelectProduct={setSelectedProductId} />
           ))}
         </div>
       </div>
@@ -273,7 +273,7 @@ export default function HomeContent() {
           }}
         >
           {musicCatalog.map(product => (
-            <ProductCard key={product.id} product={product} onSelectProduct={setSelectedProductId} />
+            <ProductCard key={product.product_code} product={product} onSelectProduct={setSelectedProductId} />
           ))}
         </div>
       </div>
